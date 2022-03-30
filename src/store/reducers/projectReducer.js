@@ -8,7 +8,19 @@ const initialState = {
 
 
 const projectReducer = (state = initialState, action) => {
-    return state;
+    switch (action.type) {
+        case 'CREATE_PROJECT':
+            return {
+                ...state,
+                projects: [...state.projects, action.projectData]
+            }
+        case 'CREATE_PROJECT_ERROR':
+            console.log('create project error', action.err);
+            return state;
+        default:
+            return state;
+
+    }
 }
 
 export default projectReducer;
